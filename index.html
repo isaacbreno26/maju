@@ -1,0 +1,1193 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Um convite para você ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================================
+   CONFIGURAÇÕES GERAIS
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        radial-gradient(circle at top, #651c38 0%, #2b0d1a 45%, #11060b 100%);
+
+    color: white;
+    overflow-x: hidden;
+}
+
+/* brilho do fundo */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,100,150,.12), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,50,100,.10), transparent 25%);
+}
+
+/* ================================
+   CORAÇÕES
+================================ */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+
+    opacity: .7;
+
+    animation:
+        subir linear forwards;
+}
+
+@keyframes subir {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .7;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+/* ================================
+   CONTAINER
+================================ */
+
+.container {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+/* ================================
+   ETAPAS
+================================ */
+
+.etapa {
+    width: 100%;
+    max-width: 650px;
+
+    display: none;
+}
+
+.etapa.ativa {
+    display: block;
+
+    animation:
+        aparecer .7s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* ================================
+   CARD
+================================ */
+
+.card {
+
+    text-align: center;
+
+    padding: 45px 35px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.12);
+}
+
+/* ================================
+   ÍCONES
+================================ */
+
+.icone {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+    animation:
+        pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* ================================
+   TEXTOS
+================================ */
+
+.pequeno {
+
+    display: block;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #ffb6c9;
+
+    margin-bottom: 15px;
+}
+
+h1,
+h2 {
+
+    font-family:
+        'Dancing Script',
+        cursive;
+}
+
+h1 {
+
+    font-size:
+        clamp(48px,10vw,75px);
+
+    margin-bottom: 20px;
+}
+
+h2 {
+
+    font-size:
+        clamp(35px,8vw,52px);
+
+    margin-bottom: 20px;
+}
+
+p {
+
+    color: #f8e8ed;
+
+    line-height: 1.8;
+
+    margin: 12px 0;
+}
+
+strong {
+    color: white;
+}
+
+/* ================================
+   BOTÕES
+================================ */
+
+.btn {
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    font-weight: 600;
+
+    border-radius: 50px;
+
+    padding: 15px 28px;
+
+    font-size: 15px;
+
+    transition: .3s;
+}
+
+.principal,
+.sim {
+
+    margin-top: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f81,
+            #ff174f
+        );
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,40,90,.35);
+}
+
+.principal:hover,
+.sim:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+}
+
+/* ================================
+   MOTIVOS
+================================ */
+
+.motivos {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+
+    margin: 25px 0;
+}
+
+.motivo {
+
+    display: flex;
+
+    align-items: center;
+
+    text-align: left;
+
+    gap: 15px;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.motivo > span {
+
+    font-size: 30px;
+}
+
+.motivo p {
+
+    margin: 0;
+
+    font-size: 14px;
+}
+
+.motivo.destaque {
+
+    border:
+        1px solid
+        rgba(255,112,150,.4);
+
+    background:
+        rgba(255,70,110,.10);
+}
+
+/* ================================
+   EVENTO
+================================ */
+
+.evento {
+
+    margin: 25px 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.evento-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    text-align: left;
+
+    padding: 16px 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.evento-item > span {
+
+    font-size: 28px;
+}
+
+.evento-item div {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.evento-item small {
+
+    font-size: 10px;
+
+    color: #ffb6c9;
+
+    letter-spacing: 1px;
+}
+
+.evento-item strong {
+
+    font-size: 17px;
+}
+
+/* ================================
+   FINAL
+================================ */
+
+.coracao {
+
+    font-size: 75px;
+
+    animation:
+        pulsar 1.4s infinite;
+}
+
+.botoes {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-height: 100px;
+
+    margin-top: 20px;
+}
+
+.sim {
+
+    margin: 0;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.nao {
+
+    background:
+        rgba(255,255,255,.12);
+
+    color: white;
+
+    position: relative;
+}
+
+.rodape {
+
+    font-size: 11px;
+
+    color: #bfa4ad;
+
+    margin-top: 25px;
+}
+
+/* ================================
+   RESPONSIVO
+================================ */
+
+@media (max-width:600px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 35px 20px;
+        border-radius: 25px;
+    }
+
+    .motivo {
+        align-items: flex-start;
+    }
+
+    .botoes {
+        min-height: 150px;
+    }
+
+    .nao {
+        position: absolute;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- CORAÇÕES -->
+<div class="hearts"></div>
+
+
+<main class="container">
+
+
+<!-- =================================
+     ETAPA 1
+================================= -->
+
+<section
+    class="etapa ativa"
+    id="etapa1">
+
+    <div class="card">
+
+        <div class="icone">
+            💌
+        </div>
+
+        <span class="pequeno">
+            TENHO UM CONVITE PARA VOCÊ
+        </span>
+
+        <h1>
+            Oi, gatinha...
+        </h1>
+
+        <p>
+            Eu poderia simplesmente mandar uma mensagem
+            perguntando se você quer sair comigo...
+        </p>
+
+        <p>
+            Mas achei que seria muito mais legal preparar
+            uma coisinha diferente. 😌
+        </p>
+
+        <button
+            class="btn principal"
+            onclick="proximaEtapa(2)">
+
+            Quero ver 👀
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     ETAPA 2
+================================= -->
+
+<section
+    class="etapa"
+    id="etapa2">
+
+    <div class="card">
+
+        <div class="icone">
+            ✨
+        </div>
+
+        <span class="pequeno">
+            ANTES DO CONVITE...
+        </span>
+
+        <h2>
+            Preciso admitir uma coisa
+        </h2>
+
+        <p>
+            Você é uma pessoa que chama atenção...
+            e, além de ser gatinha, parece ser alguém
+            que vale a pena conhecer melhor. ❤️
+        </p>
+
+        <p>
+            Então pensei:
+            <strong>
+                por que não transformar isso
+                em um primeiro encontro?
+            </strong>
+        </p>
+
+        <button
+            class="btn principal"
+            onclick="proximaEtapa(3)">
+
+            Continue...
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     ETAPA 3
+================================= -->
+
+<section
+    class="etapa"
+    id="etapa3">
+
+    <div class="card">
+
+        <div class="icone">
+            😂
+        </div>
+
+        <span class="pequeno">
+            MOTIVOS PARA ACEITAR
+        </span>
+
+        <h2>
+            Tenho alguns argumentos...
+        </h2>
+
+
+        <div class="motivos">
+
+
+            <div class="motivo">
+
+                <span>
+                    😂
+                </span>
+
+                <p>
+
+                    <strong>
+                        Sou engraçado.
+                    </strong>
+
+                    <br>
+
+                    Pelo menos eu acho.
+                    Você vai ter que avaliar pessoalmente.
+
+                </p>
+
+            </div>
+
+
+            <div class="motivo">
+
+                <span>
+                    😎
+                </span>
+
+                <p>
+
+                    <strong>
+                        Sou divertido.
+                    </strong>
+
+                    <br>
+
+                    Prometo tentar fazer você rir
+                    durante o jantar.
+
+                </p>
+
+            </div>
+
+
+            <div class="motivo">
+
+                <span>
+                    🤝
+                </span>
+
+                <p>
+
+                    <strong>
+                        Sou gente boa.
+                    </strong>
+
+                    <br>
+
+                    E aparentemente isso conta bastante
+                    em um primeiro encontro.
+
+                </p>
+
+            </div>
+
+
+            <div class="motivo destaque">
+
+                <span>
+                    🤣
+                </span>
+
+                <p>
+
+                    <strong>
+                        Sobre minha aparência...
+                    </strong>
+
+                    <br>
+
+                    Não sou tão feio a ponto de você
+                    passar vergonha e nem tão bonito
+                    a ponto de te causar ciúmes.
+
+                    <br><br>
+
+                    <b>
+                        Ou seja: equilíbrio perfeito. 😂
+                    </b>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="btn principal"
+            onclick="proximaEtapa(4)">
+
+            Acho que quero conhecer esse indivíduo 👀
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     ETAPA 4
+================================= -->
+
+<section
+    class="etapa"
+    id="etapa4">
+
+    <div class="card">
+
+        <div class="icone">
+            🍽️
+        </div>
+
+        <span class="pequeno">
+            AGORA VEM A PARTE IMPORTANTE
+        </span>
+
+        <h2>
+            Nosso primeiro jantar ❤️
+        </h2>
+
+
+        <div class="evento">
+
+
+            <div class="evento-item">
+
+                <span>
+                    📅
+                </span>
+
+                <div>
+
+                    <small>
+                        QUANDO
+                    </small>
+
+                    <strong>
+                        Domingo
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="evento-item">
+
+                <span>
+                    🕗
+                </span>
+
+                <div>
+
+                    <small>
+                        HORÁRIO
+                    </small>
+
+                    <strong>
+                        20:00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="evento-item">
+
+                <span>
+                    📍
+                </span>
+
+                <div>
+
+                    <small>
+                        ONDE
+                    </small>
+
+                    <strong>
+                        Figueiredo
+                    </strong>
+
+                    <small>
+                        Valparaíso de Goiás
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <p>
+
+            A ideia é simples:
+
+            <strong>
+                comer alguma coisa gostosa,
+                conversar, rir um pouco e descobrir
+                se essa ideia de primeiro encontro
+                foi uma boa ideia.
+            </strong>
+
+            😌❤️
+
+        </p>
+
+
+        <button
+            class="btn principal"
+            onclick="proximaEtapa(5)">
+
+            Ver o convite final 💌
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     ETAPA 5
+================================= -->
+
+<section
+    class="etapa"
+    id="etapa5">
+
+    <div class="card final">
+
+        <div class="coracao">
+            ❤️
+        </div>
+
+        <span class="pequeno">
+            ENTÃO...
+        </span>
+
+        <h1>
+            Você aceita jantar comigo?
+        </h1>
+
+        <p>
+
+            Prometo uma noite leve,
+            divertida e sem pressão.
+
+            Só quero aproveitar um momento
+            legal com você. ❤️
+
+        </p>
+
+
+        <div class="botoes">
+
+
+            <button
+                class="btn sim"
+                onclick="aceitar()">
+
+                SIM, ACEITO ❤️
+
+            </button>
+
+
+            <button
+                class="btn nao"
+                id="btnNao">
+
+                Não 😢
+
+            </button>
+
+
+        </div>
+
+
+        <p class="rodape">
+
+            P.S.: O botão "Não" está meio
+            tímido hoje... 😂
+
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+/* =========================================
+   MUDAR DE ETAPA
+========================================= */
+
+function proximaEtapa(numero) {
+
+    document
+        .querySelectorAll(".etapa")
+        .forEach(etapa => {
+
+            etapa.classList.remove("ativa");
+
+        });
+
+
+    const proxima =
+        document.getElementById(
+            "etapa" + numero
+        );
+
+
+    if (proxima) {
+
+        proxima.classList.add("ativa");
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =========================================
+   CORAÇÕES FLUTUANTES
+========================================= */
+
+function criarCoracao() {
+
+    const container =
+        document.querySelector(".hearts");
+
+
+    const heart =
+        document.createElement("div");
+
+
+    heart.classList.add("heart");
+
+
+    const coracoes = [
+
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘"
+
+    ];
+
+
+    heart.innerHTML =
+        coracoes[
+            Math.floor(
+                Math.random() *
+                coracoes.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+
+    heart.style.fontSize =
+        (Math.random() * 18 + 12)
+        + "px";
+
+
+    heart.style.animationDuration =
+        (Math.random() * 5 + 5)
+        + "s";
+
+
+    container.appendChild(heart);
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 10000);
+
+}
+
+
+setInterval(
+    criarCoracao,
+    500
+);
+
+
+/* =========================================
+   BOTÃO NÃO — FUGITIVO 😂
+========================================= */
+
+const btnNao =
+    document.getElementById("btnNao");
+
+
+function fugir() {
+
+    const largura =
+        window.innerWidth;
+
+
+    const altura =
+        window.innerHeight;
+
+
+    const margem = 20;
+
+
+    const maxX =
+        largura -
+        btnNao.offsetWidth -
+        margem;
+
+
+    const maxY =
+        altura -
+        btnNao.offsetHeight -
+        margem;
+
+
+    const x =
+        Math.max(
+            margem,
+            Math.random() * maxX
+        );
+
+
+    const y =
+        Math.max(
+            margem,
+            Math.random() * maxY
+        );
+
+
+    btnNao.style.position =
+        "fixed";
+
+
+    btnNao.style.left =
+        x + "px";
+
+
+    btnNao.style.top =
+        y + "px";
+
+
+    btnNao.style.zIndex =
+        "9999";
+
+}
+
+
+/* computador */
+
+btnNao.addEventListener(
+    "mouseenter",
+    fugir
+);
+
+
+/* celular */
+
+btnNao.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        fugir();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* clique */
+
+btnNao.addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+        fugir();
+
+    }
+);
+
+
+/* =========================================
+   ACEITOU ❤️
+========================================= */
+
+function aceitar() {
+
+    const numero =
+        "5561998711406";
+
+
+    const mensagem =
+        "Está marcado então ❤️ " +
+        "Domingo às 20:00 no Figueiredo! " +
+        "Já estou ansioso para nosso primeiro jantar 😌🍽️❤️";
+
+
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(
+            mensagem
+        );
+
+
+    window.location.href =
+        url;
+
+}
+
+</script>
+
+</body>
+</html>
+```
